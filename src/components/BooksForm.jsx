@@ -14,6 +14,7 @@ const BooksForm = () => {
     if (newBook !== '' && newAuthor !== '') {
       dispatch(addBook({ title: newBook, author: newAuthor, item_id: uuid() }));
       setState(false);
+      event.target.reset();
     } else {
       setState(true);
     }
