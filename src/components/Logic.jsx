@@ -1,10 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import BooksForm from './BooksForm';
-import { removeBook } from '../redux/books/booksSlice';
+import Book from './Book';
 
 const Logic = () => {
   const books = useSelector((store) => store.books);
-  const dispatch = useDispatch();
 
   const showBooks = () => {
     if (books.length === 0) {
@@ -16,27 +15,13 @@ const Logic = () => {
     }
     return (
       <div>
-        { books.map((book) => (
-          <ul key={book.title}>
-            <li>
-              {' '}
-              name=
-              { book.title}
-            </li>
-            <li>
-              {' '}
-              author=
-              { book.author}
-            </li>
-            <button
-              type="button"
-              onClick={() => {
-                dispatch(removeBook(book.item_id));
-              }}
-            >
-              Remove
-            </button>
-          </ul>
+        {books.map((book) => (
+          <Book
+            key={book.title}
+            id={book.id}
+            title={book.title}
+            author={book.author}
+          />
         ))}
       </div>
     );

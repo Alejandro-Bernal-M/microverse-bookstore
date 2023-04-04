@@ -12,7 +12,7 @@ const BooksForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (newBook !== '' && newAuthor !== '') {
-      dispatch(addBook({ title: newBook, author: newAuthor, item_id: uuid() }));
+      dispatch(addBook({ title: newBook, author: newAuthor, id: uuid() }));
       setState(false);
       event.target.reset();
     } else {
