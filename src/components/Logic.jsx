@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import BooksForm from './BooksForm';
+import { removeBook } from '../redux/books/booksSlice';
 
 const Logic = () => {
-  const [books, setBooks] = useState([]);
+  const books = useSelector((store) => store.books);
+  const dispatch = useDispatch();
 
   const showBooks = () => {
     if (books.length === 0) {
@@ -15,17 +17,25 @@ const Logic = () => {
     return (
       <div>
         { books.map((book) => (
-          <ul key={book.id}>
+          <ul key={book.title}>
             <li>
               {' '}
-              name =
-              {book.name}
+              name=
+              { book.title}
             </li>
             <li>
               {' '}
               author=
-              {book.author}
+              { book.author}
             </li>
+            <button
+              type="button"
+              onClick={() => {
+                dispatch(removeBook(book.item_id));
+              }}
+            >
+              Remove
+            </button>
           </ul>
         ))}
       </div>
@@ -35,7 +45,7 @@ const Logic = () => {
   return (
     <div className="App">
       {showBooks()}
-      <BooksForm books={books} setBooks={setBooks} />
+      <BooksForm />
     </div>
   );
 };
