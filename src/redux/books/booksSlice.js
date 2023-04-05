@@ -24,6 +24,15 @@ export const postBook = createAsyncThunk(
   },
 );
 
+export const deleteBook = createAsyncThunk(
+  'delete/deleteBook',
+  async (data) => {
+    const itemToDelete = `${url}/${data}`;
+    const response = await axios.delete(itemToDelete);
+    return response.data;
+  },
+);
+
 const initialState = {
   books: [],
   isLoading: false,
@@ -35,22 +44,7 @@ const initialState = {
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-    // addBook: (state, { payload }) => {
-
-    //   // console.log(state.books);
-    //   // console.log(payload);
-    //   // state.books.push({
-    //   //   title: payload.title,
-    //   //   author: payload.author,
-    //   //   id: payload.id,
-    //   // });
-    // },
-    removeBook: (state, { payload }) => {
-      const index = state.findIndex((state) => state.id === payload);
-      state.splice(index, 1);
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchData.pending, (state) => ({
       ...state,
@@ -71,9 +65,12 @@ const booksSlice = createSlice({
       postMsg: action.payload,
       counter: state.counter + 1,
     }));
+    builder.addCase(deleteBook.fulfilled, (state) => ({
+      ...state,
+      counter: state.counter - 1,
+    }
+    ));
   },
 });
-
-export const { removeBook } = booksSlice.actions;
 
 export default booksSlice.reducer;
