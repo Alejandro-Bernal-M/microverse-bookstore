@@ -9,7 +9,7 @@ export const fetchData = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const response = await axios(url);
-      return response;
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

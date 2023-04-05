@@ -1,8 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import BooksForm from './BooksForm';
+import { fetchData } from '../redux/books/booksSlice';
 
 const Logic = () => {
+  const dispatch = useDispatch();
   const [books, setBooks] = useState([]);
+  useEffect(
+    () => {
+      dispatch(fetchData());
+    }, [dispatch],
+  );
 
   const showBooks = () => {
     if (books.length === 0) {
