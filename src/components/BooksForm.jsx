@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
-import { addBook } from '../redux/books/booksSlice';
+import { postBook } from '../redux/books/booksSlice';
 
 const BooksForm = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,9 @@ const BooksForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (newBook !== '' && newAuthor !== '') {
-      dispatch(addBook({ title: newBook, author: newAuthor, id: uuid() }));
+      dispatch(postBook({
+        item_id: uuid(), title: newBook, author: newAuthor, category: 'undefined',
+      }));
       setState(false);
       event.target.reset();
     } else {

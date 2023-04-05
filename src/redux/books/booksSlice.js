@@ -16,23 +16,36 @@ export const fetchData = createAsyncThunk(
   },
 );
 
+export const postBook = createAsyncThunk(
+  'post/postBook',
+  async (data) => {
+    const response = await axios.post(url, data);
+    return response.data;
+  },
+);
+
 const initialState = {
   books: [],
   isLoading: false,
   error: '',
+  postMsg: '',
+  counter: 0,
 };
 
 const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    addBook: (state, { payload }) => {
-      state.push({
-        title: payload.title,
-        author: payload.author,
-        id: payload.id,
-      });
-    },
+    // addBook: (state, { payload }) => {
+
+    //   // console.log(state.books);
+    //   // console.log(payload);
+    //   // state.books.push({
+    //   //   title: payload.title,
+    //   //   author: payload.author,
+    //   //   id: payload.id,
+    //   // });
+    // },
     removeBook: (state, { payload }) => {
       const index = state.findIndex((state) => state.id === payload);
       state.splice(index, 1);
@@ -53,9 +66,14 @@ const booksSlice = createSlice({
       isLoading: false,
       error: action.payload,
     }));
+    builder.addCase(postBook.fulfilled, (state, action) => ({
+      ...state,
+      postMsg: action.payload,
+      counter: state.counter + 1,
+    }));
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
+export const { removeBook } = booksSlice.actions;
 
 export default booksSlice.reducer;
