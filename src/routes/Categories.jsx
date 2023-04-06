@@ -6,8 +6,10 @@ const Categories = () => {
   const message = useSelector((store) => store.categories);
 
   return (
-    <div>
-      {message.message}
+    <div className="construction">
+      <h1>
+        {message.message}
+      </h1>
       <button
         type="button"
         onClick={() => { dispatch(checkStatus); }}
