@@ -22,7 +22,7 @@ const Logic = () => {
       );
     }
     return (
-      <div>
+      <div className="booksHolder">
         {Object.keys(books).map((item) => (
           <Book
             key={item}
@@ -38,6 +38,7 @@ const Logic = () => {
   return (
     <div className="App">
       {showBooks()}
+      <div className="horizontal-divider" />
       <BooksForm />
     </div>
   );

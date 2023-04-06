@@ -34,10 +34,11 @@ const BooksForm = () => {
   const handleError = () => (state ? 'Please add a name from the book and an author' : '');
   return (
     <div className="divForm">
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Book title" onChange={handleTitle} />
-        <input type="text" placeholder="author" onChange={handleAuthor} />
-        <button type="submit">Add book</button>
+      <h2 className="form-title">ADD NEW BOOK</h2>
+      <form onSubmit={handleSubmit} className="form">
+        <input className="input" type="text" placeholder="Book title" onChange={handleTitle} />
+        <input className="input" type="text" placeholder="author" onChange={handleAuthor} />
+        <button className="form-btn" type="submit">ADD BOOK</button>
       </form>
       <p>{handleError()}</p>
     </div>
