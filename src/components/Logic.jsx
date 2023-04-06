@@ -22,7 +22,7 @@ const Logic = () => {
       );
     }
     return (
-      <div>
+      <div className="booksHolder">
         {Object.keys(books).map((item) => (
           <Book
             key={item}
