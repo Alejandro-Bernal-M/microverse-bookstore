@@ -20,7 +20,8 @@ html {
 body {
   height: auto;
   min-height: 100%;
-  padding-top: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
   background-color: var(--pale-grey);
 }
 
@@ -31,10 +32,10 @@ body {
 }
 
 .wrapper {
-  width: 80%;
+  width: 90%;
   height: auto;
   margin: 20px auto;
-  padding-bottom: 2rem; 
+  padding-bottom: 6rem; 
   border-radius: 4px;
   box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
   background-color: var(--pale-grey);
@@ -245,4 +246,56 @@ a {
   font-weight: 300;
   letter-spacing: .5px;
   color: #fff;
+}
+
+.horizontal-divider {
+  height: 0.125rem;
+  background-color: #e8e8e8;
+  width: 90%;
+  margin: 2.5rem auto;
+}
+
+.divForm {
+ width: 90%;
+ margin: 0 auto;
+}
+
+.form-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -.18px;
+  color: #888;
+}
+
+.form {
+  margin-top: 20px;
+  display: flex;
+  grid-gap: 32px;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+.input {
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  background-color: #fff;
+  font-size: 1rem;
+  letter-spacing: -.15px;
+  color: #121212;
+  flex: 1;
+}
+
+.form-btn {
+  cursor: pointer;
+  width: 20%;
+  padding: 12px;
+  border-radius: 3px;
+  background-color: #0290ff;
+  border: none;
+  letter-spacing: .5px;
+  color: #fff;
+  font-size: .813rem;
+  font-weight: 700;
+  font-family: "Roboto Slab",serif;  
 }

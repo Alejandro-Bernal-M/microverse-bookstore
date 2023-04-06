@@ -38,6 +38,7 @@ const Logic = () => {
   return (
     <div className="App">
       {showBooks()}
+      <div className="horizontal-divider" />
       <BooksForm />
     </div>
   );
